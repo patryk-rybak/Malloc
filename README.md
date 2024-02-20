@@ -3,7 +3,7 @@
 ### The code I wrote is located in mm.c.
 
 
-### GENERAL INFORMATION
+### General information
 
 Block size is a multiple of 16 bytes (`ALIGNMENT`). Each block has a header
 containing information about its size and two flags, the first about whether the
@@ -15,7 +15,7 @@ that separate the blocks by appropriate size. The user's payload starts at an
 address divisible by 16.
 
 
-1. ### DESCRIPTION OF THE BLOCK STRUCTURE
+### Description od the block structure
 
 Each block contains a 4-byte header with information about the size of the
 entire block (the size is in words and is divisible by 16). On the last two bits
@@ -31,7 +31,7 @@ needs to represent the absence of a predecessor or successor, it does so with
 the -1 value.
 
 
-2. ### DESCRIPTION OF MEMORY ALLOCATION AND FREEING
+### Description of memory allocation and freeing
 
 The `malloc` procedure adds the header size to the received one and rounds it to
 the nearest number divisible by 16. Then it searches the segregated list of free
@@ -48,7 +48,7 @@ blocks are connected together. The block is added to the appropriate free block
 list.
 
 
-3. ### ORGANIZATION OF THE FREE BLOCKS LIST
+### Organization of the free blocks list
 
 To manage free blocks I use segregated lists with `N_BUCKETS` (10) buckets. Each
 bucket is a pointer to the first element of the block list with sizes in the
@@ -61,5 +61,5 @@ Adding and removing elements from buckets is done according to the LIFO
 principle.
 
 
-##
+###
 [detailed project description](projekt-malloc.pdf)
