@@ -1,6 +1,7 @@
 # Mallco
 
-## GENERAL INFORMATION
+
+### GENERAL INFORMATION
 
 Block size is a multiple of 16 bytes (ALIGNMENT). Each block has a header
 containing information about its size and two flags, the first about whether the
@@ -11,7 +12,8 @@ header. They are organized in a segregated list that contains N_BUCKTES buckets
 that separate the blocks by appropriate size. The user's payload starts at an
 address divisible by 16.
 
-## DESCRIPTION OF THE BLOCK STRUCTURE
+
+### DESCRIPTION OF THE BLOCK STRUCTURE
 
 Each block contains a 4-byte header with information about the size of the
 entire block (the size is in words and is divisible by 16). On the last two bits
@@ -25,7 +27,8 @@ header. Pointers are not actually real pointers, but the distance from the
 beginning of the heap. If a free block needs to represent the absence of a
 predecessor or successor, it does so with the -1 value.
 
-## DESCRIPTION OF MEMORY ALLOCATION AND FREEING
+
+### DESCRIPTION OF MEMORY ALLOCATION AND FREEING
 
 The `malloc` procedure adds the header size to the received one and rounds it to
 the nearest number divisible by 16. Then it searches the segregated list of free
@@ -41,7 +44,8 @@ checks whether any of its neighboring firends are also free. If so, the free
 blocks are connected together. The block is added to the appropriate free block
 list.
 
-## ORGANIZATION OF THE FREE BLOCKS LIST
+
+### ORGANIZATION OF THE FREE BLOCKS LIST
 
 To manage free blocks I use segregated lists with N_BUCKETS (10) buckets. Each
 bucket is a pointer to the first element of the block list with sizes in the
@@ -54,4 +58,5 @@ Adding and removing elements from buckets is done according to the LIFO
 principle.
 
 
+##
 [Detailed project description.](projekt-malloc.pdf)
