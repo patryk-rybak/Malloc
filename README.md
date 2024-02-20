@@ -1,19 +1,21 @@
 # Mallco
 
+### The code I wrote is located in mm.c.
+
 
 ### GENERAL INFORMATION
 
-Block size is a multiple of 16 bytes (ALIGNMENT). Each block has a header
+Block size is a multiple of 16 bytes (`ALIGNMENT`). Each block has a header
 containing information about its size and two flags, the first about whether the
 block is free or allocated and the second about the same thing but in the
 context of the previous block. Free blocks additionally have pointers for the
 previous and next free block and a footer with the same information as the
-header. They are organized in a segregated list that contains N_BUCKTES buckets
+header. They are organized in a segregated list that contains `N_BUCKTES` buckets
 that separate the blocks by appropriate size. The user's payload starts at an
 address divisible by 16.
 
 
-### DESCRIPTION OF THE BLOCK STRUCTURE
+1. ### DESCRIPTION OF THE BLOCK STRUCTURE
 
 Each block contains a 4-byte header with information about the size of the
 entire block (the size is in words and is divisible by 16). On the last two bits
@@ -24,11 +26,12 @@ used.
 Free blocks additionally have pointers for the previous and next free block in
 the list of free blocks and a footer, which contains the same information as the
 header. Pointers are not actually real pointers, but the distance from the
-beginning of the heap. If a free block needs to represent the absence of a
-predecessor or successor, it does so with the -1 value.
+beginning of the heap (internal fragmentation optimization). If a free block
+needs to represent the absence of a predecessor or successor, it does so with
+the -1 value.
 
 
-### DESCRIPTION OF MEMORY ALLOCATION AND FREEING
+2. ### DESCRIPTION OF MEMORY ALLOCATION AND FREEING
 
 The `malloc` procedure adds the header size to the received one and rounds it to
 the nearest number divisible by 16. Then it searches the segregated list of free
@@ -45,9 +48,9 @@ blocks are connected together. The block is added to the appropriate free block
 list.
 
 
-### ORGANIZATION OF THE FREE BLOCKS LIST
+3. ### ORGANIZATION OF THE FREE BLOCKS LIST
 
-To manage free blocks I use segregated lists with N_BUCKETS (10) buckets. Each
+To manage free blocks I use segregated lists with `N_BUCKETS` (10) buckets. Each
 bucket is a pointer to the first element of the block list with sizes in the
 appropriate range. The ranges are:
 
@@ -59,4 +62,4 @@ principle.
 
 
 ##
-[Detailed project description.](projekt-malloc.pdf)
+[detailed project description](projekt-malloc.pdf)
