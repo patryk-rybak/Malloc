@@ -1,4 +1,4 @@
-# Mallco
+# Malloc
 
 ### The code I wrote is located in mm.c.
 [detailed project description](projekt-malloc.pdf)
