@@ -1,6 +1,7 @@
 # Mallco
 
 ### The code I wrote is located in mm.c.
+[detailed project description](projekt-malloc.pdf)
 
 
 ### General information
@@ -59,7 +60,3 @@ appropriate range. The ranges are:
 
 Adding and removing elements from buckets is done according to the LIFO
 principle.
-
-
-###
-[detailed project description](projekt-malloc.pdf)
